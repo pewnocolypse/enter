@@ -1,0 +1,30 @@
+
+<center>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @picture.Subject %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @picture.Comment %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @picture.Date %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <img src="<%= @picture.image_url %>" width = 250 height = 250>
+</p>
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+
+<%= link_to 'Back', pictures_path %>
+	
+</center>
+

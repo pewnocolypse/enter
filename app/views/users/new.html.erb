@@ -1,10 +1,35 @@
-<h1>Users#new</h1>
+<h1>Sign Up!</h1>
 <p>Find me in app/views/users/new.html.erb</p>
 
 <%= simple_form_for(@user) do |f| %>
-	<%= f.input :name %>
-	<%= f.input :email %>
-	<%= f.input :password %>
-	<%= f.input :password_confirmation %>
-	<%= f.button :submit %>
+<center>
+	<table>
+
+				<tr>
+				<%= f.input :name %>
+			</tr>
+			<h2></h2>
+			<tr>
+				<%= f.input :email %>
+			</tr>
+			
+			<h2></h2>
+			<tr>
+				<%= f.input :password %>
+			</tr>
+			
+			<h2></h2>
+			<tr>
+				<%= f.input :password_confirmation %>
+			</tr>
+			
+			<h2></h2>
+			<tr>
+				<%= f.button :submit %>
+			</tr>
+			
+		
+
+	</table>
+</center>
 <% end %>
