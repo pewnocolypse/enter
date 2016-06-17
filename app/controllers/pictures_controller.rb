@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /pictures
   # GET /pictures.json
@@ -21,6 +22,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
+    @user = User.all
   end
 
   # POST /pictures

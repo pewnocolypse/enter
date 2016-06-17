@@ -1,0 +1,203 @@
+  <html>
+  <head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+   <link rel="stylesheet"  href="css/padding.css">
+  </head>
+  <body >
+    
+  
+
+
+
+
+
+    
+       <nav class="navbar navbar-default navbar-fixed-top" class = "img-responsive">
+          <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">InstantGram</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/Home">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Search for friends</a></li>
+               
+              </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                             <li ><a href="#">
+                <a href="/pictures/new"><img class = "img-responsive" src="http://www.thegreatmedicines.com/wp-content/uploads/2014/12/110767-glowing-green-neon-icon-alphanumeric-plus-sign.png" width = 50 height = 50></a>
+                </li>
+                <li class="nav navbar-nav">
+                  <a href= "/signout">Log out</a>
+            
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+
+<a href= "/signout">Log out</a>
+
+
+
+      
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+<nav class="navbar navbar-default">
+  <% fcount = 967 %>     
+<table>
+  <tbody>
+    <tr>
+      <td class = "col-md-1">
+      </td>
+      <td class = "col-md-2">
+       <h4>GoldenKookieMakne</h4>
+      </td>
+      <td class = "col-md-4">
+        <img  class = "img-responsive img-rounded" src="https://ygfamilyartists.files.wordpress.com/2011/06/i_love_kpop_by_xdajoker-d3fg3a0.jpg" width = "700" height = "500">
+
+      </td >
+      
+      <td class = "col-md-3">
+        <table>
+          <tbody>
+            <tr>
+              <h5>Followers: 2.2k</h5>
+            </tr>
+            <tr>
+              <h5>Following: 717</h5>
+            </tr>
+              
+
+               <button id="up" onclick=>follow</button>
+             
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+            
+           
+          
+      </td>
+      <td class = "col-md-1">
+
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+
+<style type="text/css">
+    td:nth-child(1) {
+      padding-right: 20px;
+      padding-bottom: 50px;
+      padding-top: 50px;
+}​
+</style>
+
+
+<table>
+ 
+<% count = 0 %>
+  <tbody >
+   <tr class="row">
+   
+    <% @pictures.reverse.each do |picture| %>
+      <% count = count + 1 %>
+        
+        <td class = "col-md-3" > 
+            <div class="hovereffect">
+               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#<%=picture.id%>"><img class = "img-responsive" src= "<%= picture.image_url %>"   width = 300 height = 300 ></button>
+                  <div class="modal fade" id="<%=picture.id%>" role="dialog">
+                    <div class="modal-dialog">
+                        
+                          <!-- Modal content-->
+                      <div class="modal-content">
+                         <div class="modal-header">
+                            <p> <%=picture.Subject%> </p>
+                          </div>
+                         <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"><img class = "img-responsive" src= "<%= picture.image_url %>"   width = 100% height = 100% ></h4>
+                          </div>
+                          <div class="modal-body">
+                            <p> <%=picture.Comment%> </p>
+                          </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                          
+                         </div>
+                      </div>
+                      
+                    </div>
+              
+           
+            </div>
+  
+
+          </td>
+          
+          
+         <td class = "col-md-1 pull-down">
+            <%= link_to 'Edit', edit_picture_path(picture) %>
+            <p></p>
+            <p></p>
+
+            <%= link_to picture, method: :delete, data: {confirm: 'Are you sure?'} do %>
+              <%= image_tag("http://www.frankchimero.com/writing/what-screens-want/trash.jpg", size: "20x20") %>
+              <% end %>
+
+          </td>
+         
+        <% if count ==3 %>
+             <% count = 0 %>
+             </tr><tr class = "row">
+          <% end %>
+      
+      
+    <% end %>
+
+  </tr>
+    
+  </tbody>
+</table>
+
+</body>
+
+
+    
+    
+  
+
+
+  </html>
+  

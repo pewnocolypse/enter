@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def index
     
     @user = User.all
@@ -13,15 +14,18 @@ class UsersController < ApplicationController
   	@user = User.new
   end
   def create
-  	@user = User.new(user_params)
-  	if @user.save
-  		redirect_to @user, notice: 'User was successfully created.'
+    passwords_match = user_params[:password] == user_params[:password_confirmation]
+  	@user = User.new(user_params.except(:password_confirmation))
+
+  	
+    if passwords_match && @user.save
+  		redirect_to root_url, notice: 'User was successfully created.'
   	else
   		render action: "new"
   	end
   end
   def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :followers)
     end
 
 end
